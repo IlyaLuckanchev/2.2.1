@@ -27,7 +27,6 @@ public class UserDaoImp implements UserDao {
       return query.getResultList();
    }
    @Override
-   @Transactional
    public List<User> getUserAboutCar(Car car) {
      return sessionFactory.getCurrentSession().
               createQuery("SELECT u FROM User u JOIN u.car c WHERE c.series = :series AND c.model = :model", User.class)
