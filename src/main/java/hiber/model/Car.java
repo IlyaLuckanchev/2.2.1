@@ -3,7 +3,7 @@ package hiber.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "car")
+@Table(name = "cars")
 public class Car {
 
     @Id
@@ -13,11 +13,15 @@ public class Car {
     private String model;
     @Column(name = "series")
     private int series;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "car")
     private User user;
 
     public Car() {
+    }
+
+    @Override
+    public String toString() {
+        return "Модель = '" + model + '\'' + ", серия = " + series;
     }
 
     public Car(String model, int series) {
